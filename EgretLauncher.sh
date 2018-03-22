@@ -17,6 +17,10 @@ fi
 src=($(sh libs/JSON.sh -b < ${properties} | grep \"egret_version\"))
 
 if [ "${src}" = "" ]; then
+	src=($(sh libs/JSON.sh -b < ${properties} | grep \"engineVersion\"))	
+fi
+
+if [ "${src}" = "" ]; then
 	echo "[ERROR] Cant parse the Egret properties"
 	exit 1
 fi
