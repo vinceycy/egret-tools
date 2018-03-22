@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sh EgretLauncher.sh ./egretProperties.json
+sh EgretLauncher.sh project/egretProperties.json
