@@ -49,4 +49,6 @@ fi
 echo "Change the Egret engine to ${egretVer}"
 ln -sf ${rootEngine}/tools/bin/egret /bin/egret
 
+echo ${rootEngine}/tools/bin > egretPath
+
 echo "END \n"

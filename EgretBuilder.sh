@@ -9,6 +9,7 @@ echo "\nExecute EgretBuilder.sh ===================="
 projectRoot=$1
 gameTag=$2
 runtime=$3
+egretPath=$4
 
 if [ "${projectRoot}" = "" ] || [ "${gameTag}" = "" ]; then
 	echo "[ERROR] The parameters are empty"
@@ -20,10 +21,14 @@ if [ "${runtime}" = "" ]; then
 	runtime=html5
 fi
 
+if [ ! "${egretPath}" = "" ]; then
+	egretPath=${egretPath}/
+fi
+
 temp=errlog
 
-egret clean ${projectRoot}
-egret build ${projectRoot} > ${temp}
+${egretPath}egret clean ${projectRoot}
+${egretPath}egret build ${projectRoot} > ${temp}
 
 cat ${temp}
 result=$(grep error ${temp})
@@ -34,7 +39,7 @@ if [ ! ${#result} = "0" ]; then
 	exit 1
 fi
 
-egret publish ${projectRoot} --version ${gameTag} --runtime html5
+${egretPath}egret publish ${projectRoot} --version ${gameTag} --runtime html5
 
 if [ "$?" != "0" ]; then
 	echo "[ERROR] Egret publish failed, error code $?"
