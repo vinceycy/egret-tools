@@ -39,7 +39,7 @@ if [ ! ${#result} = "0" ]; then
 	exit 1
 fi
 
-${egretPath}egret publish ${projectRoot} --version ${gameTag} --runtime html5
+${egretPath}egret publish ${projectRoot} --version ${gameTag} --runtime ${runtime}
 
 if [ "$?" != "0" ]; then
 	echo "[ERROR] Egret publish failed, error code $?"
